@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # a Bash script that displays username, user id and home directory for each line of /etc/passwd.
 
 input="/etc/passwd"

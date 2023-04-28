@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 #  a Bash script that displays numbers from 1 to 100.
 
 count=1
