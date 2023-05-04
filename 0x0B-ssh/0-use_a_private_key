@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # a Bash script that uses ssh to connect to my server using the private key ~/.ssh/school with the user ubuntu.
 
-ssh -i ~/.ssh/my_key ubuntu@54.237.11.65
+ssh -i ~/.ssh/my_key -o "PasswordAuthentication no" ubuntu@54.237.11.65
