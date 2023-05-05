@@ -1,6 +1,5 @@
 # installs the package puppet-lint
 package { 'puppet-lint':
-ensure   => '2.1.1',
+ensure   => '4.0.0',
 provider => 'gem',
 }
-
