@@ -9,5 +9,5 @@ path    => '/usr/bin:/usr/sbin:/bin'
 }
 exec { 'Pubkey auth':
 command => 'bash -c "echo PubkeyAuthentication yes >> /etc/ssh/ssh_config"',
-path    => '/usr/bin:/usr/sbin:/bin
+path    => '/usr/bin:/usr/sbin:/bin'
 }
