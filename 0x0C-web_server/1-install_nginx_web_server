@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # a bash script that Install nginx on your web-01 server
-#listening on port 80 with a GET request
+# listening on port 80 with a GET request
 
 app-get update
 apt-get install -y nginx
-echo "hello World" > /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
 service nginx start
