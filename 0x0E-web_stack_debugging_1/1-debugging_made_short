@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# a bash script that ensures Ubuntu container’s Nginx installation is listening on port 80 and stops running
+# a bash script that ensures Ubuntu container’s Nginx installation is listening on port 80 and kills the process
 cp -r /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx restart
-sudo pkill nginx
+pkill nginx
