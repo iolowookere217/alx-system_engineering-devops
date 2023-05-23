@@ -8,11 +8,18 @@ sudo ufw allow 80
 sudo ufw --force enable
 sudo ufw status
 
+<<<<<<< HEAD
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
 
 string_to_replace="server_name _;"
 
 new_string="server_name _;\n\terror_page 404 \/404.html; \nlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
+=======
+
+string_to_replace="server_name _;"
+
+new_string="server_name _;\n\terror_page 404 \/404.html; \nlocation = \/404.html {\n\t\troot \/etc\/nginx\/html;\n\t\tinternal;\n\t}"
+>>>>>>> 3a8f2646bdb3e3428a80f3c49e8e282240e9e1be
 
 sudo sed -i "s/$string_to_replace/$new_string/" /etc/nginx/sites-available/default
 sudo service nginx restart
