@@ -19,4 +19,4 @@ sudo sed -i "s/$string_to_replace/$new_string/" /etc/nginx/sites-available/defau
 # http response header configuration for web_02
 sudo sed -i '/^http (/a \\tadd_header X-Served-By $hostname;' /etc/nginx/nginx.conf
 
-sudo service nginx restart
+sudo service nginx start 
