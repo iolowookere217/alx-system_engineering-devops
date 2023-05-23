@@ -22,4 +22,3 @@ exec {'run':
 command => 'sudo service nginx restart',
 provider => shell,
 }
- 
