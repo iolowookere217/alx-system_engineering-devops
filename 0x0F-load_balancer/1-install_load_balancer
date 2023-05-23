@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# a bash script to Install and configure HAproxy on your lb-01 server.
+# so that it send traffic to web-01 and web-02
+# HAproxy can be managed via an init script
+
+sudo apt-get update -y
+sudo apt-get install haproxy -y
+
+echo "
+frontend front
+bind *:80
+default_backend back
+
+backend back
+balance roundrobin
+server 184593-web-01 54.237.11.65:80 check
+server 184593-web-02 35.153.57.47:80 check
+
+" >> /etc/haproxy/haproxy.cfg
+
+sudo sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/haproxy
+
+sudo service haproxy restart
