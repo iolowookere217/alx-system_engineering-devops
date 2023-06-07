@@ -29,7 +29,7 @@ def count_words(subreddit, word_list, my_dict={}, after=None):
 
         # sort by values in descending order
         sorted_dict_desc = {k: v for k, v in sorted(my_dict.items(), key=lambda item: item[1])}
-        print(sorted_dict_desc)
+        # print(sorted_dict_desc)
         [print("{}: {}".format(k, v) for k, v in sorted_dict.items()]
     else:
         return None
