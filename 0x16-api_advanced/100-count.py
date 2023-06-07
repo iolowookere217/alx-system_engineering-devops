@@ -6,12 +6,13 @@
 
 import requests
 
+
 def count_words(subreddit, word_list, my_dict={}, after=None):
-    url = "https://www.reddit.com/r/{}/hot/.json?after={}".format(subreddit, after)
+    url = "https://www.reddit.com/r/{}/hot/.json?after={}"\
+           .format(subreddit, after)
     header = {"User-Agent": "MyApp/1.0"}
 
     response = requests.get(url, headers=header, allow_redirects=False)
-    print(response)
     if response.status_code == 200:
         data = response.json()
         after = data.get("data").get("after")
@@ -28,8 +29,9 @@ def count_words(subreddit, word_list, my_dict={}, after=None):
             count_words(subreddit, word_list, my_dict, after)
 
         # sort by values in descending order
-        sorted_dict_desc = {k: v for k, v in sorted(my_dict.items(), key=lambda item: item[1])}
-        # print(sorted_dict_desc)
-        [print("{}: {}".format(k, v) for k, v in sorted_dict.items()]
+            sorted_dict_desc = {k: v for k, v in sorted(my_dict.items(),
+                                key=lambda item: item[1])}
+
+            print(["{}: {}".format(k, v) for k, v in sorted_dict_desc.items()])
     else:
         return None
