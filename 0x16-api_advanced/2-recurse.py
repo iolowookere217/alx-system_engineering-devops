@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-""" Write a function that queries the Reddit API and returns
-the number of subscribers (not active users, total subscribers)
-    for a given subreddit."""
+""" A recursive function that queries the
+Reddit API and returns a list containing the
+titles of all hot articles for a given subreddit"""
 
 import requests
 
