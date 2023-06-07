@@ -4,27 +4,29 @@
 # install nginx
 sudo apt-get update
 sudo apt-get install -y nginx
-
+sudo ufw allow 22
+sudo ufw allow 80
 
 # firewall config
-ufw allow 'Nginx HTTP'
-
+sudo ufw --force enable
+sudo ufw status
 
 # custom page
-echo "Hello World!" > /var/www/html/index.html
+echo "Hello World!" | sudo tee /var/www/html/index.html
 
 # Redirection
 string_to_replace="server_name _;"
 new_string="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/iolowookere217 permanent;"
 sudo sed -i "s/$string_to_replace/$new_string/" /etc/nginx/sites-available/default
 
-# custom not a page
-echo "Ceci n'est pas une page" > /var/www/html/404.html
 
-string_to_replace="listen 80 default_server;"
-new_string="listen 80 default_server;\n\terror_page 404 \/404.html; \nlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
+# custom not a page
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+
+string_to_replace="server_name _;"
+new_string="server_name _;\n\terror_page 404 \/404.html; \nlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
 sudo sed -i "s/$string_to_replace/$new_string/" /etc/nginx/sites-available/default
 
 sudo sed -i '/^http {/a \\tadd_header X-Served-By $hostname;' /etc/nginx/nginx.conf
 
-nginx -s reload
+sudo service nginx restart
